@@ -30,7 +30,7 @@ const items = [
 ];
 
 const Single = ({ item }) => {
-  const ref = useRef();
+  const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -43,12 +43,12 @@ const Single = ({ item }) => {
       <div className="container">
         <div className="wrapper">
           <div className="imageContainer" ref={ref}>
-            <img src={item.img} alt="" />
+            <img src={item.img} alt={`${item.title} project preview`} loading="lazy" />
           </div>
           <motion.div className="textContainer" style={{ y }}>
             <h2>{item.title}</h2>
             <p>{item.desc}</p>
-            <button>See Demo</button>
+            <a className="button" href="#contact">Ask About This Project</a>
           </motion.div>
         </div>
       </div>
@@ -57,7 +57,7 @@ const Single = ({ item }) => {
 };
 
 export default function Portfolio() {
-  const ref = useRef();
+  const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -72,7 +72,7 @@ export default function Portfolio() {
   return (
     <div className="portfolio" ref={ref}>
       <div className="progress">
-        <h1>Featured Works</h1>
+        <h2>Featured Works</h2>
         <motion.div style={{ scaleX }} className="progressBar"></motion.div>
       </div>
       {items.map((item) => (

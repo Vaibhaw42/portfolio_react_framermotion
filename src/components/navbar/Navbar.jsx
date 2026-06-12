@@ -7,15 +7,10 @@ const Navbar = () => {
             {/*Sidebar*/}
             <Sidebar/>
             <div className="wrapper">
-              <motion.span initial={{opacity:0, scale:0.5}}
-              animate={{opacity:1, scale:2}}
-               transition={{duration:0.5}}> VAIBHAV RAI </motion.span> 
-              <div className="social">
-                <a href="#"><img src="/facebook.png" alt=""/></a>
-                <a href="#"><img src="/instagram.png" alt=""/></a>
-                <a href="#"><img src="/youtube.png" alt=""/></a>
-                
-                </div> 
+              <motion.span initial={{opacity:0}}
+              animate={{opacity:1}}
+               transition={{duration:0.5}}> VAIBHAV RAI </motion.span>
+              <a className="contactLink" href="#contact">Contact</a>
             </div>
         </div>
     )

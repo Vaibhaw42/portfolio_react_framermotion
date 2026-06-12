@@ -9,13 +9,14 @@
     justify-content: center;
     overflow: hidden;
 
-    h1{
+    h2{
         font-size: 100px;
+        font-weight: 700;
 
         @include mobile{
             font-size: 70px;
             text-align: center;
-      
+
           }
     }
 

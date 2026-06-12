@@ -16,11 +16,36 @@ a{
 body{
     background-color: #0c0c1d;
     color: lightgray;
+    overflow-x: hidden;
 }
 
 section{
-    height: 110vh;
-    scroll-snap-align: center;
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+button,
+a {
+    &:focus-visible {
+        outline: 3px solid orange;
+        outline-offset: 4px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+        scroll-snap-type: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 @mixin mobile {

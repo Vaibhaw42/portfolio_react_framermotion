@@ -27,48 +27,44 @@ const Services = () => {
             </motion.div>
             <motion.div className="titlecontainer" variants={variants}>
                 <div className="title">
-                    <img src="people.webp" alt="" />
-                    <h1><motion.b whileHover={{color:"orange"}}>Unique</motion.b> Ideas 
-                    </h1>
+                    <img src="/people.webp" alt="People collaborating on a project" loading="lazy" />
+                    <h2><motion.b whileHover={{color:"orange"}}>Unique</motion.b> Ideas
+                    </h2>
                 </div>
-                <div className="title"><h1>
-                    <motion.b whileHover={{color:"orange"}}>For Your</motion.b> Buisness.
-                    </h1>
-                    <button>WHAT WE DO ?</button>
+                <div className="title"><h2>
+                    <motion.b whileHover={{color:"orange"}}>For Your</motion.b> Business.
+                    </h2>
+                    <a className="button" href="#contact">WORK WITH ME</a>
                     </div>
             </motion.div>
             <motion.div className="listcontainer" variants={variants}>
                 <motion.div className="box" whileHover={{background:"lightgray", color: "black"}}>
                     <h2>Branding</h2>
                     <p>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>
-                    <button> GO </button>
                 </motion.div>
                 <motion.div className="box"whileHover={{background:"lightgray", color: "black"}}>
                     <h2>Branding</h2>
                     <p>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>
-                    <button> GO </button>
                 </motion.div>
                 <motion.div className="box"whileHover={{background:"lightgray", color: "black"}}>
                     <h2>Branding</h2>
                     <p>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>
-                    <button> GO </button>
                 </motion.div>
                 <motion.div className="box"whileHover={{background:"lightgray", color: "black"}}>
                     <h2>Branding</h2>
                     <p>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>
-                    <button> GO </button>
                 </motion.div>
             </motion.div>
         </motion.div>

@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import "./contact.scss"
-import {motion , useInView } from "framer-motion"
+import "./contact.scss";
+import { motion, useInView } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 const variants = {
@@ -22,29 +22,27 @@ const Contact = () => {
     const ref =useRef();
     const formRef = useRef();
     
-    const {error,setError} = useState(false);
-    const {success,setSuccess} = useState(false)
+    const [status, setStatus] = useState("idle");
 
     const isInView = useInView(ref, {margin:"-100px"})
     
-    const sendEmail = (e) => {
+    const sendEmail = async (e) => {
         e.preventDefault();
-    emailjs
-    .sendForm('service_1j86oo1', 'template_ptg5bfu', formRef.current,
-       '_-7RvCY6SZfve00rB'
-    )
-    .then(
-      (result) => {
-       setSuccess(true);
+        setStatus("sending");
 
-        
-      },
-      (error) => {
-        setError(true);
-        
-      },
-    );
-};
+        try {
+            await emailjs.sendForm(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                formRef.current,
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+            );
+            setStatus("success");
+            formRef.current.reset();
+        } catch {
+            setStatus("error");
+        }
+    };
     
     return (
         <motion.div 
@@ -83,12 +81,19 @@ const Contact = () => {
                 ref={formRef}
                 onSubmit={sendEmail}
                 initial= {{opacity:0}} whileInView={{opacity:1}} transition={{delay: 4 , duration: 1 }}>
-                    <input type="text" required placeholder="Name" name="name" />
-                    <input type="email" required placeholder="Email" name="email" />
-                    <textarea rows={8} placeholder="Message" name="message"/>
-                    <button>Submit</button>
-                    {error && "Error"}
-                    {success && "Success"}
+                    <label htmlFor="name">Name</label>
+                    <input id="name" type="text" required placeholder="Your name" name="name" autoComplete="name" />
+                    <label htmlFor="email">Email</label>
+                    <input id="email" type="email" required placeholder="you@example.com" name="email" autoComplete="email" />
+                    <label htmlFor="message">Message</label>
+                    <textarea id="message" rows={8} required placeholder="Tell me about your project" name="message"/>
+                    <button type="submit" disabled={status === "sending"}>
+                        {status === "sending" ? "Sending..." : "Submit"}
+                    </button>
+                    <p className={`formStatus ${status}`} role="status" aria-live="polite">
+                        {status === "error" && "Message could not be sent. Please email me directly."}
+                        {status === "success" && "Message sent successfully."}
+                    </p>
                 </motion.form>
             </div>
         </motion.div>

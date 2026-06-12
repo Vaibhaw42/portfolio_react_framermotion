@@ -32,8 +32,8 @@ const textVariants = {
     
     },
     scrollButton: {
-        opacity:0,
-        y: 10,
+        opacity:[0, 1, 0],
+        y: [0, 10, 0],
         transition:{
             duration:2,
             repeat:Infinity
@@ -50,17 +50,17 @@ const Hero = () => {
                 <motion.h2 variants={textVariants}> VAIBHAV RAI </motion.h2>
                 <motion.h1 variants={textVariants}>WEB DEVELOPER AND UI DESIGNER</motion.h1>
                 <motion.div variants={textVariants} className="buttons">
-                <motion.button variants={textVariants}>See The Latest Works</motion.button>
-                <motion.button variants={textVariants}>Contact Me</motion.button>
+                <motion.a variants={textVariants} className="button" href="#portfolio">See The Latest Works</motion.a>
+                <motion.a variants={textVariants} className="button" href="#contact">Contact Me</motion.a>
                 </motion.div>
             <motion.img variants={textVariants} animate="scrollButton" src="/scroll.png" alt="" />
             </motion.div>
             </div>
             <motion.div className="slidingTextContainer" variants={sliderVariants} initial ="initial" animate="animate" >
-                Creator Software Developer  
+                Creative Software Developer
             </motion.div>
            <div className="imageContainer">
-            <img src="/Hero.png" alt="Hero" />
+            <img src="/Hero.png" alt="Vaibhav Rai" />
            </div>
         </div>
     )

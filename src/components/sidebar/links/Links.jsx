@@ -1,5 +1,4 @@
 import {motion} from "framer-motion";
-import React from "react";
 const variants ={
   open :{
     transition:{
@@ -23,23 +22,23 @@ const itemvariants ={
     opacity:0,
   }
 }
-const Links = () => {
+const Links = ({ onNavigate }) => {
 
     const items =[
-        "Homepage",
-        "Portfolio",
-        "Services",
-        "Contact",
-        "About"
+        { label: "Home", id: "home" },
+        { label: "Portfolio", id: "portfolio" },
+        { label: "Services", id: "services" },
+        { label: "Contact", id: "contact" },
     ];
     return (
         <motion.div className='links' variants={variants}>
           {items.map((item) => (
-            <motion.a href={'#${item}'} key ={item} variants={itemvariants}
+            <motion.a href={`#${item.id}`} key={item.id} variants={itemvariants}
+            onClick={onNavigate}
             whileHover={{scale:1.1}}
             whileTap={{scale:0.95}}
             >
-               {item}
+               {item.label}
                 </motion.a>
           ))}
         </motion.div>

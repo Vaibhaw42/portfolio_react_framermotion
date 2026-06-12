@@ -1,4 +1,18 @@
-# React + Vite
+# Vaibhav Rai Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Animated portfolio built with React, Vite, Sass, Framer Motion, and EmailJS.
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+## Production build
+
+```bash
+npm run build
+npm run preview
+```
 
