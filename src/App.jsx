@@ -1,4 +1,4 @@
-import "./app.scss";
+import "./styles/globals.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/cursor/Cursor";
 import Hero from "./components/hero/Hero";
