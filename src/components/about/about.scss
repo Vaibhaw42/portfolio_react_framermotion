@@ -1,0 +1,88 @@
+@import "../../styles/mixins.scss";
+
+.about {
+  padding: var(--sp-24) var(--sp-6);
+}
+
+.about__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--sp-16);
+  align-items: start;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+  }
+}
+
+.about__media img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.about__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.about__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+
+.about__body h2 {
+  font-size: var(--fs-2xl);
+  line-height: 1.05;
+}
+
+.about__body p {
+  color: var(--fg-muted);
+  line-height: 1.6;
+  font-size: var(--fs-md);
+}
+
+.about__current {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-4);
+  padding: var(--sp-6) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: var(--sp-4) 0;
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.about__stat-value {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+}
+
+.about__stat-label {
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.about__body .btn {
+  align-self: flex-start;
+}
