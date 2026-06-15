@@ -1,28 +1,31 @@
-import { useState } from "react";
-import "./Cursor.scss";
-import { useEffect } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import "./cursor.scss";
 
 const Cursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 500, damping: 40, mass: 0.5 });
+  const springY = useSpring(y, { stiffness: 500, damping: 40, mass: 0.5 });
+  const [hover, setHover] = useState(false);
 
   useEffect(() => {
-    const mouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+    const onMove = (e) => {
+      x.set(e.clientX);
+      y.set(e.clientY);
+      const el = e.target?.closest?.("[data-cursor='hover']");
+      setHover(Boolean(el));
     };
-
-    window.addEventListener("mousemove", mouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", mouseMove);
-    };
-  }, []);
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
+  }, [x, y]);
 
   return (
     <motion.div
-      animate={{ x: position.x+10, y: position.y+10 }}
-      className="cursor"
-    ></motion.div>
+      className={`cursor${hover ? " is-hover" : ""}`}
+      style={{ x: springX, y: springY }}
+      aria-hidden="true"
+    />
   );
 };
 
