@@ -10,9 +10,11 @@ const drawerVariants = {
   open: { x: 0 },
 };
 
+const sectionIds = sections.map((s) => s.id);
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const active = useActiveSection(sections.map((s) => s.id));
+  const active = useActiveSection(sectionIds);
 
   const close = () => setOpen(false);
 
