@@ -1,104 +1,81 @@
 @import "../../styles/mixins.scss";
 
-.contact{
-    height: 100%;
-    max-width: 1366px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-
-    @include mobile {
-        max-width: 100%;
-        padding: 10px;
-        flex-direction: column;
-      }
-
-  .textcontainer{
-    flex:1;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-
-    @include mobile {
-        gap: 30px;
-        text-align: center;
-        align-items: center;
-        margin-top: 70px;
-      }
-
-    h1{
-        font-size: 100px;
-        line-height: 80px;
-
-        @include mobile {
-            font-size: 40px;
-          }
-
-    }
-    span{
-        font-weight: 300;
-    }
-  }
-
-  .formcontainer{
-    flex:1;
-    position: relative;
-
-
-    .phoneSvg{
-        stroke: orange;
-        position: absolute;
-        margin: auto;
-        z-index: -1;
-
-        @include mobile {
-            svg {
-              width: 300px;
-              height: 300px;
-              text-align: center;
-              margin-left: -40px;
-            }
-        }
-
-    }
-    form{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    input,textarea{
-        padding: 20px;
-        background-color: transparent;
-        border: 1px solid white;
-        color: white;
-        border-radius: 5px;
-
-    }
-    label{
-        font-weight: 500;
-        margin-bottom: -14px;
-    }
-    button{
-        padding: 20px;
-        border: none;
-        background-color: orange;
-        cursor: pointer;
-        font-weight: 500;
-    }
-    button:disabled{
-        cursor: wait;
-        opacity: 0.7;
-    }
-    .formStatus{
-        min-height: 24px;
-    }
-    .formStatus.error{
-        color: #ff8a8a;
-    }
-    .formStatus.success{
-        color: #8dffb1;
-    }
+.contact {
+  padding: var(--sp-24) var(--sp-6);
+  background: var(--bg-elev);
 }
+
+.contact__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-16);
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
   }
+}
+
+.contact__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+
+.contact h2 {
+  font-size: var(--fs-2xl);
+  line-height: 1.05;
+  margin: var(--sp-2) 0 var(--sp-6);
+}
+
+.contact__socials {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  font-size: var(--fs-md);
+
+  a:hover { color: var(--accent); }
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  position: relative;
+
+  label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-muted);
+  }
+
+  input, textarea {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: var(--radius-sm);
+    font: inherit;
+    transition: border-color var(--dur-fast) var(--ease);
+
+    &:focus-visible { border-color: var(--accent); outline: none; }
+  }
+
+  .btn { align-self: flex-start; }
+}
+
+.contact__status {
+  min-height: 1.4em;
+  font-size: var(--fs-sm);
+
+  &--error { color: #ff8a8a; }
+  &--success { color: #8dffb1; }
+  &--ratelimited { color: var(--accent); }
 }
