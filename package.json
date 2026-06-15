@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "fetch:gh": "node scripts/fetch-github.mjs",
+    "prebuild": "npm run fetch:gh"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",

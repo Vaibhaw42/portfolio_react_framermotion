@@ -1,0 +1,12 @@
+{
+  "user": {
+    "login": "placeholder",
+    "name": "Placeholder User",
+    "bio": "GitHub stats unavailable.",
+    "avatar": "",
+    "followers": 0,
+    "totalStars": 0
+  },
+  "pinned": [],
+  "contributions": { "total": 0, "weeks": [] }
+}

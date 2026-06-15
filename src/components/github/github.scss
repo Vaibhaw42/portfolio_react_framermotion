@@ -1,0 +1,93 @@
+@import "../../styles/mixins.scss";
+
+.github {
+  padding: var(--sp-24) var(--sp-6);
+}
+
+.github__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.github__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+
+.github h2 { font-size: var(--fs-2xl); line-height: 1.05; }
+
+.github__empty {
+  color: var(--fg-muted);
+  font-size: var(--fs-sm);
+  code { padding: 0 4px; background: var(--bg-elev); border-radius: 4px; }
+}
+
+.github__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: var(--sp-4) 0;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  strong { font-family: var(--font-display); font-size: var(--fs-xl); }
+  span { color: var(--fg-muted); font-family: var(--font-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.1em; }
+}
+
+.github__heatmap svg {
+  width: 100%;
+  height: auto;
+  max-height: 140px;
+}
+
+.github__pinned {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+
+  @include mobile { grid-template-columns: 1fr; }
+}
+
+.github__repo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--dur-fast) var(--ease);
+
+  &:hover { border-color: var(--accent); }
+
+  h3 { font-size: var(--fs-md); }
+  p { color: var(--fg-muted); font-size: var(--fs-sm); }
+}
+
+.github__repo-meta {
+  display: flex;
+  gap: var(--sp-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  margin-top: auto;
+
+  i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+}
