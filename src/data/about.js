@@ -1,15 +1,14 @@
-// TODO: replace with real content
 export const about = {
   image: "/Hero.png",
   paragraphs: [
-    "Placeholder bio paragraph one. Describe yourself, your focus, and your current chapter.",
-    "Placeholder bio paragraph two. Add philosophy, what you like to build, what excites you.",
+    "Full-stack developer building enterprise SaaS and IoT platforms. Comfortable across the stack — Angular, Node.js, Postgres, DynamoDB, Redis, Kafka — with a track record of shipping production code on event-driven systems and time-series dashboards.",
+    "Strong foundation in system design, scalable architectures, and Data Structures & Algorithms. Side-projects lean into AI tooling: NL→SQL agents, MCP servers, AI-powered learning analytics.",
   ],
-  current: "Currently building things at Placeholder Co.",
+  current: "Currently building the DeJoule Energy Management Platform at SmartJoules — IoT-based BMS running in production across 10+ sites.",
   stats: [
-    { label: "Years experience", value: "3+" },
-    { label: "Projects shipped", value: "20+" },
-    { label: "Repos", value: "40+" },
-    { label: "Stars", value: "100+" },
+    { label: "Production sites", value: "10+" },
+    { label: "Microservices touched", value: "18+" },
+    { label: "APIs shipped", value: "50+" },
+    { label: "Equipment components", value: "300+" },
   ],
 };

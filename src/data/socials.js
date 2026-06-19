@@ -1,7 +1,5 @@
-// TODO: replace with real handles
 export const socials = [
-  { label: "GitHub", url: "https://github.com/your-handle" },
-  { label: "LinkedIn", url: "https://linkedin.com/in/your-handle" },
-  { label: "X", url: "https://x.com/your-handle" },
-  { label: "Email", url: "mailto:you@example.com" },
+  { label: "GitHub", url: "https://github.com/vaibhavrai-smartjoules" },
+  { label: "LinkedIn", url: "https://linkedin.com/in/vaibha-rai-89a068224" },
+  { label: "Email", url: "mailto:vaibhaw42@gmail.com" },
 ];
