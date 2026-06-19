@@ -15,9 +15,8 @@
   transition: width var(--dur-fast) var(--ease),
               height var(--dur-fast) var(--ease),
               margin var(--dur-fast) var(--ease),
-              background var(--dur-fast) var(--ease),
               border-color var(--dur-fast) var(--ease),
-              mix-blend-mode var(--dur-fast) var(--ease);
+              border-width var(--dur-fast) var(--ease);
   mix-blend-mode: difference;
 
   &.is-hover {
@@ -25,10 +24,15 @@
     height: 56px;
     margin-left: -28px;
     margin-top: -28px;
-    background: var(--accent);
     border-color: var(--accent);
-    mix-blend-mode: normal;
+    border-width: 2px;
   }
 
   @include mobile { display: none; }
 }
+
+[data-theme="light"] .cursor {
+  mix-blend-mode: normal;
+  border-color: var(--fg);
+}
+

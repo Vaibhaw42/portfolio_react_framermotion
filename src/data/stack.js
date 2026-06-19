@@ -7,7 +7,6 @@ export const stack = [
       { name: "RxJS", slug: "reactivex" },
       { name: "PrimeNG", slug: "primeng" },
       { name: "Apache ECharts", slug: "apacheecharts" },
-      { name: "React", slug: "react" },
     ],
   },
   {
@@ -15,8 +14,6 @@ export const stack = [
     items: [
       { name: "Node.js", slug: "nodedotjs" },
       { name: "Sails.js", slug: "sailsdotjs" },
-      { name: "Express", slug: "express" },
-      { name: "Django", slug: "django" },
       { name: "REST APIs", slug: "openapiinitiative" },
     ],
   },
@@ -27,14 +24,12 @@ export const stack = [
       { name: "MongoDB", slug: "mongodb" },
       { name: "DynamoDB", slug: "amazondynamodb" },
       { name: "InfluxDB", slug: "influxdb" },
-      { name: "SQLite", slug: "sqlite" },
     ],
   },
   {
     group: "Cloud & DevOps",
     items: [
       { name: "AWS EC2", slug: "amazonec2" },
-      { name: "Docker", slug: "docker" },
       { name: "PM2", slug: "pm2" },
       { name: "Redis", slug: "redis" },
       { name: "Kafka", slug: "apachekafka" },

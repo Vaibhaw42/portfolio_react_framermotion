@@ -3,6 +3,9 @@ import { useEffect, useRef } from "react";
 const COUNT = 80;
 const LINK_DIST = 130;
 
+const readAccent = () =>
+  getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#22d3ee";
+
 const ParticleField = () => {
   const canvasRef = useRef(null);
 
@@ -11,6 +14,15 @@ const ParticleField = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     let raf;
+    let accent = readAccent();
+
+    const themeObserver = new MutationObserver(() => {
+      accent = readAccent();
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -28,9 +40,6 @@ const ParticleField = () => {
       vx: (Math.random() - 0.5) * 0.3,
       vy: (Math.random() - 0.5) * 0.3,
     }));
-
-    const accent = getComputedStyle(document.documentElement)
-      .getPropertyValue("--accent").trim() || "#22d3ee";
 
     const tick = () => {
       const w = canvas.clientWidth;
@@ -74,6 +83,7 @@ const ParticleField = () => {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      themeObserver.disconnect();
     };
   }, []);
 
