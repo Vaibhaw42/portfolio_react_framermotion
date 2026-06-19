@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useMagnetic } from "../../hooks/useMagnetic";
 import ParticleField from "./ParticleField";
@@ -15,10 +16,20 @@ const textVariants = {
 const Hero = () => {
   const workRef = useMagnetic();
   const contactRef = useMagnetic();
+  const heroRef = useRef(null);
+
+  const onMove = (e) => {
+    const el = heroRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  };
 
   return (
-    <section id="home" className="hero">
+    <section id="home" className="hero" ref={heroRef} onMouseMove={onMove}>
       <ParticleField />
+      <div className="hero__spotlight" aria-hidden="true" />
       <motion.div
         className="hero__inner"
         variants={textVariants}

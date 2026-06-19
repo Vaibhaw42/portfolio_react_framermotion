@@ -60,11 +60,16 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
   font-size: var(--fs-sm);
-  transition: all var(--dur-fast) var(--ease);
+  background: var(--bg);
+  transition: border-color var(--dur-fast) var(--ease),
+              color var(--dur-fast) var(--ease),
+              transform var(--dur-fast) var(--ease),
+              box-shadow var(--dur-fast) var(--ease);
 
   &:hover {
     border-color: var(--accent);
     color: var(--accent);
-    img { filter: brightness(0) saturate(100%) invert(78%) sepia(83%) saturate(394%) hue-rotate(143deg) brightness(96%) contrast(91%); }
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 25%, transparent);
   }
 }

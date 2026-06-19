@@ -1,7 +1,69 @@
-import { useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { useMemo, useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { projects } from "../../data/projects";
 import "./work.scss";
+
+const Card = ({ p }) => {
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [8, -8]), {
+    stiffness: 200,
+    damping: 20,
+  });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-8, 8]), {
+    stiffness: 200,
+    damping: 20,
+  });
+
+  const onMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const onLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.article
+      ref={ref}
+      className={`work__card${p.featured ? " is-featured" : ""}`}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.5 }}
+      style={{ rotateX, rotateY, transformPerspective: 1000 }}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
+      <div className="work__image">
+        <img src={p.image} alt={`${p.title} preview`} loading="lazy" />
+      </div>
+      <div className="work__body">
+        <div className="work__title-row">
+          <h3>{p.title}</h3>
+          <span className="work__year">{p.year}</span>
+        </div>
+        <p>{p.summary}</p>
+        <div className="work__tags">
+          {p.tags.map((t) => <span key={t}>{t}</span>)}
+        </div>
+        <div className="work__links">
+          {p.live && (
+            <a href={p.live} target="_blank" rel="noreferrer noopener" className="btn btn--ghost" data-cursor="hover">Live ↗</a>
+          )}
+          {p.repo && (
+            <a href={p.repo} target="_blank" rel="noreferrer noopener" className="btn btn--ghost" data-cursor="hover">Code ↗</a>
+          )}
+        </div>
+      </div>
+    </motion.article>
+  );
+};
 
 const Work = () => {
   const [filter, setFilter] = useState("All");
@@ -27,12 +89,12 @@ const Work = () => {
           <h2 id="work-title">Selected projects.</h2>
         </header>
 
-        <div className="work__filters" role="tablist" aria-label="Filter by tag">
+        <div className="work__filters" aria-label="Filter by tag">
           {tags.map((tag) => (
             <button
               key={tag}
-              role="tab"
-              aria-selected={filter === tag}
+              type="button"
+              aria-pressed={filter === tag}
               className={`work__filter${filter === tag ? " is-active" : ""}`}
               onClick={() => setFilter(tag)}
               data-cursor="hover"
@@ -43,39 +105,7 @@ const Work = () => {
         </div>
 
         <div className="work__grid">
-          {visible.map((p) => (
-            <motion.article
-              key={p.id}
-              className={`work__card${p.featured ? " is-featured" : ""}`}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ y: -6 }}
-            >
-              <div className="work__image">
-                <img src={p.image} alt={`${p.title} preview`} loading="lazy" />
-              </div>
-              <div className="work__body">
-                <div className="work__title-row">
-                  <h3>{p.title}</h3>
-                  <span className="work__year">{p.year}</span>
-                </div>
-                <p>{p.summary}</p>
-                <div className="work__tags">
-                  {p.tags.map((t) => <span key={t}>{t}</span>)}
-                </div>
-                <div className="work__links">
-                  {p.live && (
-                    <a href={p.live} target="_blank" rel="noreferrer noopener" className="btn btn--ghost" data-cursor="hover">Live ↗</a>
-                  )}
-                  {p.repo && (
-                    <a href={p.repo} target="_blank" rel="noreferrer noopener" className="btn btn--ghost" data-cursor="hover">Code ↗</a>
-                  )}
-                </div>
-              </div>
-            </motion.article>
-          ))}
+          {visible.map((p) => <Card key={p.id} p={p} />)}
         </div>
       </div>
     </section>

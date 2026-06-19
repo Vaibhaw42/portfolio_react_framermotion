@@ -1,5 +1,6 @@
 import "./styles/globals.scss";
 import Cursor from "./components/cursor/Cursor";
+import ScrollProgress from "./components/scrollProgress/ScrollProgress";
 import Navbar from "./components/navbar/Navbar";
 import Hero from "./components/hero/Hero";
 import About from "./components/about/About";
@@ -12,6 +13,7 @@ import Contact from "./components/contact/Contact";
 const App = () => (
   <>
     <a href="#main" className="skip-link">Skip to content</a>
+    <ScrollProgress />
     <Cursor />
     <Navbar />
     <main id="main">

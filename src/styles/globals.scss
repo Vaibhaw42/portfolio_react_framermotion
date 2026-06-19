@@ -16,6 +16,10 @@ html {
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
+section {
+  scroll-margin-top: 80px;
+}
+
 body {
   background: var(--bg);
   color: var(--fg);

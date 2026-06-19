@@ -4,9 +4,18 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: color-mix(in srgb, var(--bg) 80%, transparent);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 60%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid transparent;
+  transition: background var(--dur) var(--ease),
+              backdrop-filter var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+
+  &.is-scrolled {
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom-color: var(--border);
+  }
 }
 
 .navbar__inner {
@@ -25,6 +34,13 @@
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: 0.5px;
+  display: inline-block;
+  transition: transform var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+
+  &:hover {
+    transform: scale(1.08) rotate(-2deg);
+    color: var(--accent);
+  }
 }
 
 .navbar__links {
@@ -63,7 +79,11 @@
   border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   transition: all var(--dur-fast) var(--ease);
-  &:hover { border-color: var(--accent); color: var(--accent); }
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 30%, transparent);
+  }
 
   @include mobile { display: none; }
 }
@@ -104,4 +124,9 @@
   gap: var(--sp-4);
   font-size: var(--fs-lg);
   font-family: var(--font-display);
+
+  a {
+    transition: color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+    &:hover { color: var(--accent); transform: translateX(4px); }
+  }
 }

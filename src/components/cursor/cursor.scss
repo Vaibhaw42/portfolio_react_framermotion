@@ -15,9 +15,8 @@
   transition: width var(--dur-fast) var(--ease),
               height var(--dur-fast) var(--ease),
               margin var(--dur-fast) var(--ease),
-              background var(--dur-fast) var(--ease),
               border-color var(--dur-fast) var(--ease),
-              mix-blend-mode var(--dur-fast) var(--ease);
+              border-width var(--dur-fast) var(--ease);
   mix-blend-mode: difference;
 
   &.is-hover {
@@ -31,3 +30,9 @@
 
   @include mobile { display: none; }
 }
+
+[data-theme="light"] .cursor {
+  mix-blend-mode: normal;
+  border-color: var(--fg);
+}
+
