@@ -25,9 +25,8 @@
     height: 56px;
     margin-left: -28px;
     margin-top: -28px;
-    background: var(--accent);
     border-color: var(--accent);
-    mix-blend-mode: normal;
+    border-width: 2px;
   }
 
   @include mobile { display: none; }
