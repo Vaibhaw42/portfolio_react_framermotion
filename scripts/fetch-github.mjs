@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const USER = process.env.GITHUB_USER || "vaibhav-rai";
+const USER = process.env.GITHUB_USER || "vaibhavrai-smartjoules";
 const TOKEN = process.env.GITHUB_TOKEN;
 const OUT = path.resolve("src/data/github.json");
 
