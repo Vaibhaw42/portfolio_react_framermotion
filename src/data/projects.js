@@ -20,7 +20,7 @@ export const projects = [
       "Vite + React + Sass + Framer Motion. Hybrid sticky nav with section-aware indicator, mouse-tilt project cards, count-up stats, build-time GitHub stats fetch.",
     image: "/projects/portfolio_react_framermotion.png",
     tags: ["React", "Vite", "Framer Motion", "Sass"],
-    live: "",
+    live: "https://portfolio-react-framermotion-six.vercel.app",
     repo: "https://github.com/Vaibhaw42/portfolio_react_framermotion",
     featured: false,
     year: 2026,
