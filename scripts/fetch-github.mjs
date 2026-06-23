@@ -1,9 +1,30 @@
 import fs from "node:fs/promises";
+import https from "node:https";
 import path from "node:path";
 
 const USER = process.env.GITHUB_USER || "vaibhavrai-smartjoules";
 const TOKEN = process.env.GITHUB_TOKEN;
 const OUT = path.resolve("src/data/github.json");
+
+const post = (body, headers) =>
+  new Promise((resolve, reject) => {
+    const req = https.request(
+      {
+        hostname: "api.github.com",
+        path: "/graphql",
+        method: "POST",
+        headers: { ...headers, "Content-Length": Buffer.byteLength(body) },
+      },
+      (res) => {
+        let raw = "";
+        res.on("data", (c) => (raw += c));
+        res.on("end", () => resolve({ ok: res.statusCode === 200, status: res.statusCode, body: raw }));
+      },
+    );
+    req.on("error", reject);
+    req.write(body);
+    req.end();
+  });
 
 const QUERY = `
   query($login: String!) {
@@ -46,14 +67,10 @@ const main = async () => {
     return;
   }
 
-  const res = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${TOKEN}`,
-      "Content-Type": "application/json",
-      "User-Agent": "portfolio-fetch",
-    },
-    body: JSON.stringify({ query: QUERY, variables: { login: USER } }),
+  const res = await post(JSON.stringify({ query: QUERY, variables: { login: USER } }), {
+    Authorization: `Bearer ${TOKEN}`,
+    "Content-Type": "application/json",
+    "User-Agent": "portfolio-fetch",
   });
 
   if (!res.ok) {
@@ -61,7 +78,7 @@ const main = async () => {
     return;
   }
 
-  const { data, errors } = await res.json();
+  const { data, errors } = JSON.parse(res.body);
   if (errors || !data?.user) {
     console.warn("[fetch-github] GraphQL error — keeping existing JSON.", errors);
     return;
