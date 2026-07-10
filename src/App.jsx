@@ -7,6 +7,7 @@ import Hero from "./components/hero/Hero";
 import About from "./components/about/About";
 import Stack from "./components/stack/Stack";
 import Experience from "./components/experience/Experience";
+import Certifications from "./components/certifications/Certifications";
 import Work from "./components/work/Work";
 import Github from "./components/github/Github";
 import Contact from "./components/contact/Contact";
@@ -22,6 +23,7 @@ const App = () => (
       <About />
       <Stack />
       <Experience />
+      <Certifications />
       <Work />
       <Github />
       <Contact />
