@@ -1,4 +1,4 @@
-@import "../../styles/mixins.scss";
+@use "../../styles/mixins" as *;
 
 .about {
   padding: var(--sp-24) var(--sp-6);

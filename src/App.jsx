@@ -1,4 +1,5 @@
 import "./styles/globals.scss";
+import { Analytics } from "@vercel/analytics/react";
 import Cursor from "./components/cursor/Cursor";
 import ScrollProgress from "./components/scrollProgress/ScrollProgress";
 import Navbar from "./components/navbar/Navbar";
@@ -25,6 +26,7 @@ const App = () => (
       <Github />
       <Contact />
     </main>
+    <Analytics />
   </>
 );
 
