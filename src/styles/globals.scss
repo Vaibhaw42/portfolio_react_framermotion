@@ -1,4 +1,4 @@
-@import "./tokens.scss";
+@use "./tokens";
 
 * {
   margin: 0;
@@ -43,6 +43,39 @@ h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: -0.02em;
+}
+
+h2[id$="-title"] {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.4em;
+}
+
+h2[id$="-title"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 64px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: heading-draw linear both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 30%;
+}
+
+@keyframes heading-draw {
+  to { transform: scaleX(1); }
+}
+
+@supports not (animation-timeline: view()) {
+  h2[id$="-title"]::after {
+    transform: scaleX(1);
+    transition: transform 0.8s var(--ease);
+  }
 }
 
 code, pre {
